@@ -1,6 +1,6 @@
 
 .main-area {
-    padding: 0.5%;
+    padding: 1%;
 }
 
 .services-area {
@@ -14,7 +14,56 @@
     margin: 5px;
 }
 
-.service-cell {
+md-header-row {
+    min-height: 10vh;
+}
+
+md-row {
+    transition: 100ms background;
+    min-height: 8vmin;
+}
+
+md-row:hover {
+    background: rgba(211, 211, 211, 0.80);
+}
+
+md-header-cell {
+    padding: 5px;
     display: flex;
-    justify-content: center
+    align-items: center;
+    font-size: 1vw;
+}
+
+md-cell {
+    display: flex;
+    align-items: center;
+    height: 99%;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 0.9vw;
+}
+
+.service-name-cell {
+    min-width: 10vw;
+}
+
+.param-1-lvl {
+    background: rgba(255, 0, 0, 0.80);
+}
+
+.param-2-lvl {
+    background: rgba(255, 165, 0, 0.80);
+}
+
+.param-3-lvl {
+    background: rgba(255, 255, 0, 0.80);
+}
+
+.param-4-lvl {
+    background: rgba(144, 238, 144, 0.80);
+}
+
+.param-5-lvl {
+    background: rgba(0, 128, 0, 0.80);
+    color: white;
 }

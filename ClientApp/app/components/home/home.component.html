@@ -2,83 +2,96 @@
     <div>
         <md-table #table [dataSource]="servicesDataSource">
             <ng-container cdkColumnDef="name">
-                <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef [ngClass]="'service-name-cell'">Service</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="'service-name-cell'">
+                    <a [href]="row.link" *ngIf="row.link">
+                        {{row.name}}
+                    </a>
+                    <span *ngIf="!row.link">
+                        {{row.name}}
+                    </span>
+                </md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="observable">
-                <md-header-cell *cdkHeaderCellDef> Observable </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.observable}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>
+                    Observable
+                </md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.observable)">{{row.observable}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="apiFirst">
-                <md-header-cell *cdkHeaderCellDef> API First </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.apiFirst}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>
+                        API First
+                </md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.apiFirst)">{{row.apiFirst}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="ciCdSupport">
-                <md-header-cell *cdkHeaderCellDef> CI/CD Support </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>
+                    CI/CD Support
+                </md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.ciCdSupport)">{{row.ciCdSupport}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="tested">
-                <md-header-cell *cdkHeaderCellDef> Tested </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Tested</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.tested)">{{row.tested}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="wellDesignedDeveloped">
-                <md-header-cell *cdkHeaderCellDef> Well designed & developed </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Well designed & developed</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.wellDesignedDeveloped)">{{row.wellDesignedDeveloped}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="measured">
                 <md-header-cell *cdkHeaderCellDef> Measured </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.measured)">{{row.measured}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="secured">
-                <md-header-cell *cdkHeaderCellDef> Secured </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Secured</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.secured)">{{row.secured}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="ecoSystemMember">
-                <md-header-cell *cdkHeaderCellDef> Eco system member </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Eco system member</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.ecoSystemMember)">{{row.ecoSystemMember}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="multiTenantSupport">
-                <md-header-cell *cdkHeaderCellDef> Multi tenant support </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Multi tenant support</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.multiTenantSupport)">{{row.multiTenantSupport}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="scalable">
-                <md-header-cell *cdkHeaderCellDef> Scalable </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Scalable</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.scalable)">{{row.scalable}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="resilient">
-                <md-header-cell *cdkHeaderCellDef> Resilient </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Resilient</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.resilient)">{{row.resilient}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="knowledge">
-                <md-header-cell *cdkHeaderCellDef> Knowledge </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Knowledge</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.knowledge)">{{row.knowledge}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="mastery">
-                <md-header-cell *cdkHeaderCellDef> Mastery </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Mastery</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.mastery)">{{row.mastery}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="devEcoSys">
-                <md-header-cell *cdkHeaderCellDef> Dev eco system </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Dev eco system</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.devEcoSys)">{{row.devEcoSys}}</md-cell>
             </ng-container>
             
             <ng-container cdkColumnDef="wellSeparated">
-                <md-header-cell *cdkHeaderCellDef> Well separated </md-header-cell>
-                <md-cell *cdkCellDef="let row"> {{row.ciCdSupport}} </md-cell>
+                <md-header-cell *cdkHeaderCellDef>Well separated</md-header-cell>
+                <md-cell *cdkCellDef="let row" [ngClass]="cellBackgroundColor(row.wellSeparated)">{{row.wellSeparated}}</md-cell>
             </ng-container>
         
             <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

@@ -52,7 +52,8 @@ namespace WellArchitectedServices.MySQL
                     Mastery = await GetNullableValue<int>(14, reader),
                     DevEcoSys = await GetNullableValue<int>(15, reader),
                     WellSeparated = await GetNullableValue<int>(16, reader),
-                    Updated = await reader.GetFieldValueAsync<DateTime>(17)
+                    Updated = await reader.GetFieldValueAsync<DateTime>(17),
+                    Link = await GetNullableObject<string>(18, reader)
                 };
                 services.Add(service);
             }
@@ -61,6 +62,17 @@ namespace WellArchitectedServices.MySQL
 
         private async Task<T?> GetNullableValue<T>(int ordinal, DbDataReader reader)
             where T : struct
+        {
+            if (!await reader.IsDBNullAsync(ordinal))
+            {
+                var result = await reader.GetFieldValueAsync<T>(ordinal);
+                return result;
+            }
+            return null;
+        }
+
+        private async Task<T> GetNullableObject<T>(int ordinal, DbDataReader reader)
+            where T : class
         {
             if (!await reader.IsDBNullAsync(ordinal))
             {

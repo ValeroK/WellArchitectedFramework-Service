@@ -26,5 +26,6 @@ namespace WellArchitectedServices.Data
         public int? DevEcoSys { get; set; }
         public int? WellSeparated { get; set; }
         public DateTime Updated { get; set; }
+        public string Link { get; set; }
     }
 }

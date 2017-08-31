@@ -37,6 +37,13 @@ export class HomeComponent {
             this.servicesDataSource = new ServicesDataSource(this.services);
         }, error => console.error(error));
     }
+
+    public cellBackgroundColor(level: number): string{
+        if (level && level > 0 && level <= 5) {
+            return 'param-' + level + '-lvl';
+        }
+        return '';
+    }
 }
 
 interface Service {
@@ -57,7 +64,8 @@ interface Service {
     mastery: number,
     devEcoSys: number,
     wellSeparated: number,
-    updated: Date
+    updated: Date,
+    link: string
 }
 
 export class ServicesDataSource extends DataSource<any> {
